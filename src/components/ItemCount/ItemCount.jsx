@@ -1,30 +1,36 @@
-import React from 'react'
-import { useState } from 'react'
-import "./ItemCount.css"
+import { Center, Flex, Box } from '@chakra-ui/react'
+import React, { useState } from 'react'
 
-const ItemCount = ({stock, onAdd}) => {
-    const [contador, setContador] = useState(1)
+const ItemCount = () => {
 
-    const sumar = () =>{
-        setContador(contador + 1)
+    const [contador, setContador] = useState(0)
+    const onAdd = () =>{
+        alert("Gracias!! Acabas de comprar: " + contador + " Productos")
+        setContador(0)
     }
-
-    const restar = () =>{
-        setContador(contador - 1)
-    }
-
-
 
     return (
-    <div>
-        <button onClick={sumar}>+</button>
-        <p>{contador}</p>
-        <button onClick={restar}>-</button>
-        <button onClick={onAdd}>Terminar compra</button>
+    <>
+      <div className='center'>
+      <Center>
+        <Flex>
+            <Box px="2">
+                <button className='md-2' onClick={() => contador < 10? setContador(contador + 1) : setContador(10)}>+</button>
+            </Box>
+            <Box px="2">
+                <p className='md-2'>{contador}</p>
+            </Box>
+            <Box px="2">
+                <button className='md-2' onClick={() => contador > 0? setContador(contador - 1) : setContador(0)}>-</button>
+            </Box>
+            <Box px="2">
+                <button className='md-2' onClick={onAdd}> Comprar </button>
+            </Box>
 
-
-
-    </div>
+        </Flex>
+      </Center>
+      </div>
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ import {
   Spacer
 } from '@chakra-ui/react'
 import CartWidget from './CartWidget'
-
+import {Link} from 'react-router-dom'
 
 
 const NavBar = () => {
@@ -21,9 +21,9 @@ const NavBar = () => {
     <div className='navbar'>
       <Flex>
         <Box p='4'>
-          
+          <Link to={"/"}>
             <h3>MBA-Moda</h3>
-     
+          </Link>
           
         </Box>
         <Spacer />
@@ -44,9 +44,9 @@ const NavBar = () => {
         <Spacer />
 
         <Box p='4'>
-              
+              <link to={"/Cart"} />
                  <CartWidget/>
-           
+              <link/>
         </Box>
       </Flex>
     </div>

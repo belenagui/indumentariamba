@@ -1,21 +1,34 @@
+import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import React from 'react'
 import NavBar from './components/NavBar'
-import CartWidget from './components/CartWidget'
-import "./main.css"
 import ItemListContainer from './components/ItemListContainer'
-import ItemCount from './components/ItemCount/ItemCount'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import Cart from "./components/Cart"
+
 
 
 const App = () => {
-  document.body.style.backgroundColor ='#242a30'
+  document.body.style.backgroundColor ='#FCEADE'
 return (
-  <div id="app">
-     <NavBar/>
+  <BrowserRouter>
+
+    <NavBar/>
+
+    <Routes>
+
+      <Route exact path="/" element={<ItemListContainer />}/>
+      <Route path="/category/:category" element={<ItemListContainer />}/>
+      <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
+     
     
-    <ItemListContainer greeting="Bienvenidos a MBA moda" />
-    <ItemCount stock={10} onAdd={()=> alert (`Cantidad agregada ${contador}`)}/>
-  </div>
-  );
+      <Route exact path="/Cart" element={<Cart/>}/>
+
+    </Routes>
+    
+
+
+  </BrowserRouter>
+  )
 }
 
 export default App
