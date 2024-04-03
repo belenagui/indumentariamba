@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './Item'
 import {Flex} from '@chakra-ui/react'
 
-const ItemList = ({product}) => {
+const ItemList = ({products}) => {
 
   
 
@@ -10,13 +10,13 @@ const ItemList = ({product}) => {
     <Flex flexWrap="wrap" justifyContent="space-around" alignItems="center" gap={4}>
         {
 
-            product.map((p)=>{
+            products.map((p)=>{
                 return (
-                    <div key={p.id}>
-                        <Item producto={p}/>
-                    </div>
-                       
+                    <>
+                      <Item product={p} key={p.id}/>
                     
+                    </>
+
                 )
             })
         }

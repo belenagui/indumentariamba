@@ -19,8 +19,6 @@ return (
       <Route exact path="/" element={<ItemListContainer />}/>
       <Route path="/category/:category" element={<ItemListContainer />}/>
       <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
-     
-    
       <Route exact path="/Cart" element={<Cart/>}/>
 
     </Routes>

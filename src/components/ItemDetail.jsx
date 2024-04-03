@@ -1,39 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCount from "./ItemCount/ItemCount";
 
 import { Card, CardBody, CardFooter, Stack, Image, Divider, Button, ButtonGroup, Heading, Text } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
-const ItemDetail = ({ product }) => {
+const ItemDetail = ({products}) => {
 
   const { id } = useParams()
-  const filterProduct = product.filter((product) => product.id == id)
+  
+  const filterProduct = products.filter((product) => product.id === id)
+
+  
   return (
-    <div>
 
-      {filterProduct.map((p) => {
-
-        return (
-
-          <div key={p.id}>
-            <Card maxW='sm' bg='#F7E3AF'>
+        <div>
+          {filterProduct.map((p) => {
+            return(
+             <div key={p.id}>
+              <Card maxW='sm' bg='#F7E3AF'>
               <CardBody>
                 <Image
-                  src={product.image}
+                  src={p.image}
 
                   borderRadius='lg'
                 />
                 <Stack mt='6' spacing='3'>
-                  <Heading size='md'>{product.tittle}</Heading>
+                  <Heading size='md'>{p.tittle}</Heading>
                   <Text>
-                    {product.description}
+                    {p.description}
                   </Text>
                   <Text>
-                    {product.category}
+                    {p.category}
                   </Text>
                   <Text color='blue.600' fontSize='2xl'>
-                    ${product.price}
+                    ${p.price}
                   </Text>
                 </Stack>
               </CardBody>
@@ -48,15 +49,18 @@ const ItemDetail = ({ product }) => {
               </CardFooter>
 
             </Card>
-          </div>
-        )
 
-      }
 
-      )}
+             </div>
+              
 
-    </div>
-  )
+            )
+
+
+          })}
+        </div>
+
+)
 
 }
 

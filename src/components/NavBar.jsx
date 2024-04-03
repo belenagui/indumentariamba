@@ -22,7 +22,7 @@ const NavBar = () => {
       <Flex>
         <Box p='4'>
           <Link to={"/"}>
-            <h3>MBA-Moda</h3>
+            <h3>MBA-Store</h3>
           </Link>
           
         </Box>
@@ -34,19 +34,39 @@ const NavBar = () => {
               SHOP
             </MenuButton>
             <MenuList className='menuList'>
-              <MenuItem>Abrigos</MenuItem>
-              <MenuItem>Musculosas</MenuItem>
-              <MenuItem>Pantalones</MenuItem>
-              <MenuItem>Sport</MenuItem>
+              <MenuItem>
+               <Link to={`/category/${"Women's clothing"}`}>
+                 Women's clothing
+                </Link>
+              </MenuItem>
+
+              <MenuItem>
+               <Link to={`/category/${"Jewelery"}`}>
+                Jewelery
+               </Link>
+              </MenuItem>
+
+
+              <MenuItem>
+                <Link to={`/category/${"Men's clothing"}`}>
+                 Men's clothing
+                </Link>
+              </MenuItem>
+
+              <MenuItem>
+               <Link to={`/category/${"Electronics"}`}>
+                Electronics
+               </Link>
+              </MenuItem>
             </MenuList>
           </Menu>
         </Box>
         <Spacer />
 
         <Box p='4'>
-              <link to={"/Cart"} />
+              <Link to={"/Cart"}>
                  <CartWidget/>
-              <link/>
+              </Link>
         </Box>
       </Flex>
     </div>

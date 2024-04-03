@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
 
 
+
 const ItemDetailContainer = () => {
+    
     const getProducts = async ()=>{
         const response = await fetch("https://fakestoreapi.com/products")
         const data = await response.json()
@@ -12,24 +14,25 @@ const ItemDetailContainer = () => {
     }
 
     /* estado del array inicial */
-    const [product, setProduct] = useState([])
+    const [products, setProduct] = useState([])
 
     /* Lo que venga de la api con una promesa se lo seteo a product */
     useEffect(() =>{
-        getProducts().then((product) => setProduct(product))
+        getProducts().then((product) => setProducts(product))
     }, [])
 
- return (
+   return (
     <>
-    {
-        product.map((p) =>{
-            return(
-                <ItemDetail product={p}/>
-            )
-        })
-    }
+      <ItemDetail
+        products={products}
+      />
+    
     </>
-  )
+    
+   )
+
 }
+
+
 
 export default ItemDetailContainer
