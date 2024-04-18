@@ -1,12 +1,10 @@
 import React from 'react'
 import { useContext } from "react";
 import { CartContext } from '../Context/CartContext';
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup, Box, Card } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
-import { Container } from '@chakra-ui/react'
+import { Container, CardBody, Stack, Heading, Text, Divider, CardFooter } from '@chakra-ui/react'
 import { Button as BootstrapButton } from "react-bootstrap"
-
-
 
 const Cart = () => {
   const{
@@ -18,16 +16,17 @@ const Cart = () => {
     addProduct
 } = useContext(CartContext);
 
-const handleEmpty = ()=>{
-  emptyCart();
-}
-
 const handleDelete = (id)=>{
   deleteProduct(id)
 }
 
 const handleSubtractProduct = (id, quantity)=>{
   quantity > 1 ? subtractProduct(id, quantity) : deleteProduct(id)
+}
+
+
+const handleEmpty = ()=>{
+  emptyCart();
 }
 
 const handleAddProduct = (id, quantity, stock) => {
@@ -93,9 +92,11 @@ const handleAddProduct = (id, quantity, stock) => {
                   </Button>
               </div>
               <div>
-              <Button as={Link} to={`/Checkout`} variant='solid' colorScheme='blue'>
-                        Finalizar Compra
-                  </Button>
+              <Button variant='solid' colorScheme='blue' >
+                <Link to={"/checkout"}>Finalizar Compra</Link>
+
+              </Button>
+
               </div>
             </div>
             </>
