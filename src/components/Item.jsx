@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 const Item = ({product}) => {
+  const{id, image, tittle, price} = product
 
   console.log(product)
   return (
@@ -16,15 +17,15 @@ const Item = ({product}) => {
         <Card maxW='sm'>
   <CardBody>
     <Image
-      src={product.image}
+      src={image}
       
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading size='md'>{product.tittle}</Heading>
+      <Heading size='md'>{tittle}</Heading>
     
       <Text color='blue.600' fontSize='2xl'>
-        ${product.price}
+        ${price}
       </Text>
     </Stack>
   </CardBody>
@@ -34,12 +35,8 @@ const Item = ({product}) => {
       <Button variant='solid' colorScheme='blue'>
         <Link to={`/item/${product.id}`}>Detalle</Link>
       </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Agregar al Carrito
-      </Button>
     </ButtonGroup>
   </CardFooter>
-  <ItemCount/>
 </Card>
     </div>
   )

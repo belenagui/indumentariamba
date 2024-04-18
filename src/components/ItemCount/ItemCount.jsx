@@ -1,13 +1,11 @@
 import { Center, Flex, Box } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
-const ItemCount = () => {
+const ItemCount = ({onAdd, disabled}) => {
 
-    const [contador, setContador] = useState(0)
-    const onAdd = () =>{
-        alert("Gracias!! Acabas de comprar: " + contador + " Productos")
-        setContador(0)
-    }
+    const [contador, setContador] = useState(1)
+
 
     return (
     <>
@@ -24,7 +22,10 @@ const ItemCount = () => {
                 <button className='md-2' onClick={() => contador > 0? setContador(contador - 1) : setContador(0)}>-</button>
             </Box>
             <Box px="2">
-                <button className='md-2' onClick={onAdd}> Comprar </button>
+                <Button className='md-2'colorScheme='teal' variant='solid'
+                 onClick={()=>onAdd(contador)}>
+                Agregar al carrito
+                </Button>
             </Box>
 
         </Flex>

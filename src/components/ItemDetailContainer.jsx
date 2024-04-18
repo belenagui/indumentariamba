@@ -1,25 +1,38 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import ItemDetail from './ItemDetail'
+import { CartContext } from '../Context/CartContext'
+import { getProductDetail } from '../firebase/firebase'
+import { useParams } from 'react-router-dom'
 
 
 
 const ItemDetailContainer = () => {
-    
-    const getProducts = async ()=>{
-        const response = await fetch("https://fakestoreapi.com/products")
-        const data = await response.json()
 
-        return data
-    }
+    const [products, setProducts] = useState([]);
+    const {id} = useParams();
+    const {cart} = useContext(CartContext);
 
-    /* estado del array inicial */
-    const [products, setProduct] = useState([])
-
-    /* Lo que venga de la api con una promesa se lo seteo a product */
+  
     useEffect(() =>{
-        getProducts().then((product) => setProducts(product))
-    }, [])
+      let ignore = false
+      if (!ignore){
+        getProductDetail(id)
+        .then((res) => {
+          const newCart = [...cart];
+          const isInCart = newCart.find((product) => product.id === res.id);
+          if (isInCart) {
+            setProducts({ ...res, stock: isInCart.stock-isInCart.quantity });
+          } else {
+            setProducts(res);
+          }
+        })
+        .catch((err) => console.log(err));
+      }
+      return ()=>{
+        ignore = true //para limpieza//
+      }
+    }, [id,cart])
 
    return (
     <>
