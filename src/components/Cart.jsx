@@ -35,16 +35,16 @@ const handleAddProduct = (id, quantity, stock) => {
 
   return (
     <>
-      <Container maxW='2xl' bg='blue.600' centerContent>
-        <Box padding='4' bg='blue.400' color='black' maxW='md'>
+      <Container  maxW='2xl' bg='rgb(252, 234, 222)' centerContent>
+        <Box padding='4' bg='white' color='black' maxW='md'>
           <h1 className='tituloCart'>Tu carrito de Productos </h1>
            {cart.length===0 ? (
             <h3> Ops ! Aún no agregaste productos </h3>
           ): (
             <>
             {cart.map((product)=>(
-              <>
-              <Card maxW='sm'>
+            
+              <Card key={product.id} maxW='sm'>
                 <CardBody>
                 <Stack mt='6' spacing='3'>
                 <Heading size='md'>{product.tittle}</Heading>
@@ -82,12 +82,11 @@ const handleAddProduct = (id, quantity, stock) => {
              </CardFooter>
             </Card>
 
-              </>
             ))}
             <div className='cart-container'>
               <div>
                 <h3> Su total: ${totalPrice} </h3>
-                <Button onClick={handleEmpty} variant='solid' colorScheme='blue'>
+                <Button p={2} m={4} onClick={handleEmpty} variant='solid' colorScheme='blue'>
                         Vaciar Carrito
                   </Button>
               </div>
