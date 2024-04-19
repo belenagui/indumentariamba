@@ -6,14 +6,8 @@ import {getDocs, getFirestore, collection, query, where,addDoc} from "firebase/f
 
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyARrkeix6iIzxzWQQd6HkoQ5yzgscsGbUU",
-  authDomain: "indumentariamba-a1125.firebaseapp.com",
-  projectId: "indumentariamba-a1125",
-  storageBucket: "indumentariamba-a1125.appspot.com",
-  messagingSenderId: "767316829604",
-  appId: "1:767316829604:web:5473b7e26e9f22ee99cd31"
-};
+const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG);
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -44,16 +38,16 @@ export async function getProductsByCategory(category) {
     return filteredByCategoryList.map(product => {
         return {
             ...product,
-            img: `../${product.img}`
+            img: `../${product.image}`
         };
     })
 }
 
 export async function sendOrder(order){
-    const orderCollection = collection(db,"orders");
+    const orderCollection = collection(db,'orders');
     const docRef = await addDoc(orderCollection, order)
     console.log('docRef generado: ' + JSON.stringify(docRef))
-    console.log('id generado' + docRef.id)
-    
+    console.log('id generado: ' + docRef.id)
+    return docRef.id
 }
 
