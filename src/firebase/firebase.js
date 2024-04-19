@@ -52,6 +52,8 @@ export async function getProductsByCategory(category) {
 export async function sendOrder(order){
     const orderCollection = collection(db,"orders");
     const docRef = await addDoc(orderCollection, order)
-    return docRef.id
+    console.log('docRef generado: ' + JSON.stringify(docRef))
+    console.log('id generado' + docRef.id)
+    
 }
 
