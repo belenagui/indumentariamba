@@ -50,4 +50,3 @@ export async function sendOrder(order){
     console.log('id generado: ' + docRef.id)
     return docRef.id
 }
-
