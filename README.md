@@ -56,11 +56,13 @@ MBA Ecommerce es una plataforma de comercio electrónico desarrollada utilizando
 ## Instalación
 
 1. Clona este repositorio en tu máquina local.
-   ```bash
+   ```
    git clone https://github.com/belenagui/indumentariamba.git
+   ```
 
-2. Navega al directorio del proyecto.
+
 ```
+2. Navega al directorio del proyecto.
 cd indumentariamba
 ```
 
@@ -68,11 +70,13 @@ cd indumentariamba
 ```
 npm install
 ```
+
 4. Inicia el servidor de desarrollo.
 ```
 npm run dev
 
 ```
+
 5. Abre tu navegador y visita el enlace proporcionado para ver la aplicación en funcionamiento
 
 ## Estructura de Archivos
