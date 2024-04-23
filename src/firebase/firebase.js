@@ -6,7 +6,15 @@ import {getDocs, getFirestore, collection, query, where,addDoc} from "firebase/f
 
 
 // Your web app's Firebase configuration
-const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG);
+const firebaseConfig = {
+    apiKey: "AIzaSyARrkeix6iIzxzWQQd6HkoQ5yzgscsGbUU",
+    authDomain: "indumentariamba-a1125.firebaseapp.com",
+    projectId: "indumentariamba-a1125",
+    storageBucket: "indumentariamba-a1125.appspot.com",
+    messagingSenderId: "767316829604",
+    appId: "1:767316829604:web:5473b7e26e9f22ee99cd31"
+  };
+
 
 
 // Initialize Firebase
